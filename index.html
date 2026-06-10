@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noa Oswald – Broadcast Engineer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --white: #F5F4F0;
+    --signal: #FF3B00;
+    --mid: #3A3A3A;
+    --muted: #888;
+    --rule: #D0CFC9;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 44px 40px;
+  }
+
+  /* HEADER */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-bottom: 2.5px solid var(--black);
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+    gap: 24px;
+  }
+
+  .name {
+    font-family: 'Space Mono', monospace;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .name span { color: var(--signal); }
+
+  .title-block { margin-top: 8px; }
+
+  .title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .badges { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .badge {
+    display: inline-block;
+    background: var(--signal);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+  }
+
+  .badge.outline {
+    background: transparent;
+    border: 1.5px solid var(--black);
+    color: var(--black);
+  }
+
+  .contact-block {
+    text-align: right;
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.9;
+  }
+
+  .passport-line {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-top: 3px;
+  }
+
+  /* BIO */
+  .bio {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--mid);
+    border-left: 3px solid var(--signal);
+    padding-left: 16px;
+    margin-bottom: 26px;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 268px;
+    gap: 32px;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 24px; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 5px;
+    margin-bottom: 14px;
+  }
+
+  /* JOB */
+  .job { margin-bottom: 18px; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .job-title {
+    font-weight: 700;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .job-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .job-company {
+    font-size: 11px;
+    color: var(--signal);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .prod-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+
+  .prod-tag {
+    display: inline-block;
+    border: 1px solid var(--signal);
+    color: var(--signal);
+    font-family: 'Space Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+  }
+
+  .prod-tag.dark {
+    border-color: var(--black);
+    color: var(--black);
+  }
+
+  .job ul { list-style: none; padding: 0; }
+
+  .job ul li {
+    padding-left: 14px;
+    position: relative;
+    color: var(--mid);
+    font-size: 11.5px;
+    margin-bottom: 3px;
+    line-height: 1.55;
+  }
+
+  .job ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--signal);
+    font-size: 10px;
+  }
+
+  /* SIDEBAR */
+  .skill-group { margin-bottom: 14px; }
+
+  .skill-group-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 8.5px;
+    padding: 3px 7px;
+    margin: 2px 2px 2px 0;
+  }
+
+  .skill-tag.light {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--mid);
+  }
+
+  /* LANGUAGES */
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .lang-dots { display: flex; gap: 3px; }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--rule);
+    border-radius: 50%;
+  }
+
+  .dot.filled { background: var(--black); }
+
+  /* REFERENCES */
+  .ref-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ref-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .ref-name { font-weight: 700; font-size: 12px; }
+  .ref-role { font-size: 11px; color: var(--signal); font-weight: 600; }
+  .ref-contact { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 1px; }
+
+  /* EDUCATION */
+  .edu-school { font-weight: 700; font-size: 12px; }
+  .edu-detail { font-size: 11px; color: var(--mid); margin-top: 2px; }
+
+  /* AVAILABILITY */
+  .avail-line { font-size: 12px; color: var(--mid); line-height: 1.8; }
+  .avail-line strong { color: var(--black); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="name">Noa <span>Oswald</span></div>
+    <div class="title-block">
+      <div class="title">Broadcast Engineer &nbsp;·&nbsp; Live Multicam &nbsp;·&nbsp; Systems Integration &nbsp;·&nbsp; Infrastructure</div>
+      <div class="badges">
+        <span class="badge">Netflix · Ultimatum South Africa</span>
+        <span class="badge outline">30-Cam Multicam</span>
+        <span class="badge outline">Bitfocus Companion</span>
+        <span class="badge outline">Corporate Live Events</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-block">
+    <div>noa.oswald@gmail.com</div>
+    <div>+27 71 240 9141 · South Africa</div>
+    <div>Mörfelden-Walldorf, Germany</div>
+    <div class="passport-line">🇩🇪 German &nbsp;·&nbsp; 🇿🇦 South African</div>
+  </div>
+</div>
+
+<!-- BIO -->
+<div class="bio">
+  Broadcast engineer with hands-on experience across large-scale live multicam productions, corporate live streaming events, and full broadcast infrastructure builds. Netflix production credit on Ultimatum South Africa (30+ cameras).Experienced in Bitfocus Companion automation, PTZ camera systems, control room design, SDI/fiber infrastructure fabrication, and solo end-to-end live production. Trained under one of South Africa's leading broadcast engineers at Visual Impact SA — part of the international Visual Impact Group serving BBC, ITV, and Sky. Dual German/South African national, immediately available for productions across Europe and Africa.
+</div>
+
+<!-- GRID -->
+<div class="grid">
+<div class="main">
+
+  <div class="section">
+    <div class="section-label">Work Experience</div>
+
+    <!-- JOB 1: VISUAL IMPACT ENGINEER -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Junior Broadcast Engineer</div>
+        <div class="job-date">Feb 2025 — Feb 2026</div>
+      </div>
+      <div class="job-company">Visual Impact SA · Cape Town, South Africa</div>
+      <div class="prod-tags">
+        <span class="prod-tag">Netflix · Ultimatum South Africa</span>
+        <span class="prod-tag">Dutch International Reality Production</span>
+        <span class="prod-tag dark">30+ Camera Multicam</span>
+      </div>
+      <ul>
+        <li>Engineered live 30+ camera multicam infrastructure for Netflix original production Ultimatum South Africa — including full control room build, signal routing, and on-set video village deployment</li>
+        <li>Designed and programmed custom Bitfocus Companion control surfaces managing 17+ PTZ cameras simultaneously and 18+ synchronised HyperDeck recording units across production</li>
+        <li>Contributed to Dutch international reality production as broadcast systems engineer — full control room build and operation</li>
+        <li>Designed and deployed complete fiber, SDI, and network cable infrastructure across multiple location shoots</li>
+        <li>Hand-fabricated and crimped SDI, timecode, and ethernet cables to broadcast specification for all productions</li>
+        <li>Built and populated professional broadcast racks including signal converters, optical fiber units, audio routing, and network switching infrastructure</li>
+        <li>Operated wireless video transmission systems and signal distribution in live production environments</li>
+        <li>Provided real-time on-set troubleshooting maintaining zero-downtime production across all shoots</li>
+      </ul>
+    </div>
+
+    <!-- JOB 2: SOLO CORPORATE EVENTS -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Freelance Broadcast Engineer · Live Events</div>
+        <div class="job-date">2025 — 2026</div>
+      </div>
+      <div class="job-company">Independent · South Africa</div>
+      <div class="prod-tags">
+        <span class="prod-tag dark">Sanlam Investments · Green Economy Summit</span>
+        <span class="prod-tag dark">Corporate Conferences</span>
+        <span class="prod-tag dark">Solo Operation</span>
+      </div>
+      <ul>
+        <li>Independently designed and operated complete end-to-end live broadcast systems for major corporate events including Sanlam Investments Green Economy Summit</li>
+        <li>Full solo production ownership: multicam switching (ATEM), PTZ camera operation, YouTube live streaming, audio mixing, and presentation integration</li>
+        <li>Built and configured complete AV infrastructure including monitors, switching, streaming encoders, and network setup for each event</li>
+        <li>Delivered zero-failure live streams to YouTube for high-profile corporate clients with real-time stream health monitoring</li>
+        <li>Managed full production lifecycle from pre-production equipment prep through live delivery and strike</li>
+      </ul>
+    </div>
+
+    <!-- JOB 3: VISUAL IMPACT INTERN -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Production & Equipment Intern</div>
+        <div class="job-date">Early 2025</div>
+      </div>
+      <div class="job-company">Visual Impact SA · Cape Town, South Africa</div>
+      <ul>
+        <li>Handled, maintained, and prepared professional broadcast equipment across SONY, ARRI, and Blackmagic ecosystems for commercial, film, and TV productions</li>
+        <li>Managed rental inventory, equipment checks, and gear preparation for high-end productions</li>
+        <li>Worked on set as AC and VT operator, supporting camera teams with setup and live operation</li>
+        <li>Developed foundational broadcast engineering knowledge under mentorship of Roedolph Louw, Head Engineer at Visual Impact SA</li>
+      </ul>
+    </div>
+
+    <!-- JOB 4: 3318 CREATIVE -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Freelance Videographer & Editor</div>
+        <div class="job-date">Apr 2025 — Present</div>
+      </div>
+      <div class="job-company">3318 Creative Agency · Remote/Location</div>
+      <ul>
+        <li>Shot and edited branded content for international clients: AfroHealth UK, Fruit Shoot Drinks UK, Nature's Twist UK, Playmates Chocolate, Stellar Lighting, Nutrivein, Shaka Can</li>
+        <li>Managed full production pipeline from concept through delivery across Instagram, TikTok, and YouTube</li>
+        <li>Colour grading and post-production on commercial content to client specification</li>
+      </ul>
+    </div>
+
+    <!-- JOB 5: WAXYS -->
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Service Staff</div>
+        <div class="job-date">Mar 2022 — Nov 2024</div>
+      </div>
+      <div class="job-company">Waxys Irish Pub Frankfurt · Frankfurt, Germany</div>
+      <ul>
+        <li>2.5 years front-of-house experience in high-volume international hospitality — multicultural team environment, high-pressure service delivery</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-label">Education</div>
+    <div class="edu-school">Deutsche Schule Johannesburg</div>
+    <div class="edu-detail">National Senior Certificate, 2019 — English, German, Afrikaans, Mathematics, Physics, Chemistry, Business Studies (Distinction)</div>
+  </div>
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <div class="section">
+    <div class="section-label">Broadcast Systems</div>
+    <div class="skill-group">
+      <div class="skill-group-title">Control & Switching</div>
+      <span class="skill-tag">Bitfocus Companion</span>
+      <span class="skill-tag">Blackamgic ATEM Ecosystem</span>
+      <span class="skill-tag">Hyperdeck/Studio Recorders</span>
+      <span class="skill-tag">PTZ systems (Panasonic,Sony,Marshall)</span>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Infrastructure</div>
+      <span class="skill-tag">SDI Cable Fabrication</span>
+      <span class="skill-tag">Timecode Cabling</span>
+      <span class="skill-tag">Ethernet Crimping</span>
+      <span class="skill-tag">Fiber Optic</span>
+      <span class="skill-tag">Signal Routing</span>
+      <span class="skill-tag">Rack Build</span>
+      <span class="skill-tag">Wireless TX</span>
+      <span class="skill-tag">Optical Converters</span>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Equipment</div>
+      <span class="skill-tag">Sony Cameras</span>
+      <span class="skill-tag">ARRI Cameras</span>
+      <span class="skill-tag">Various Studio & Field monitors</span>
+      <span class="skill-tag">Blackmagic Ecosystem</span>
+      <span class="skill-tag">DJI Ecosystem</span>
+      <span class="skill-tag">Netgear & Ubiquity switches</span>
+      <span class="skill-tag">Various Production Lighting</span>
+      
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Streaming & Software</div>
+      <span class="skill-tag light">YouTube Live</span>
+      <span class="skill-tag light">LINKEDIN Live</span>
+      <span class="skill-tag light">DaVinci Resolve</span>
+      <span class="skill-tag light">OBS</span>
+      <span class="skill-tag light">Blackmagic SW</span>
+      <span class="skill-tag light">Canva</span>
+      <span class="skill-tag light">MS 365</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Languages</div>
+    <div class="lang-item">
+      <span>English</span>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+      </div>
+    </div>
+    <div class="lang-item">
+      <span>German</span>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="lang-item">
+      <span>Afrikaans</span>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="lang-item">
+      <span>Croatian</span>
+      <div class="lang-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">References</div>
+    <div class="ref-item">
+      <div class="ref-name">Roedolph Louw</div>
+      <div class="ref-role">Head Engineer · Visual Impact SA</div>
+      <div class="ref-contact">+27 79 892 1417</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Marius Van Straaten</div>
+      <div class="ref-role">Director · Visual Impact SA</div>
+      <div class="ref-contact">+27 82 855 0077</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Jordan Abrahams</div>
+      <div class="ref-role">CEO · 3318 Creative Agency</div>
+      <div class="ref-contact">+31 6 38388833</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Availability</div>
+    <div class="avail-line">
+      <div>📍 Mörfelden-Walldorf, Germany</div>
+      <div>✈️ Available for travel & on-location</div>
+      <div>🌍 Europe · Africa · Remote</div>
+      <div style="margin-top:6px;"><strong>Immediately available</strong></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
